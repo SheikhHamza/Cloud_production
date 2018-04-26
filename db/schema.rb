@@ -12,17 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20180425075346) do
 
-  create_table "hotels", force: :cascade do |t|
-    t.string "name"
-    t.text "address"
-    t.text "description"
-    t.string "phone_number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "rooms", force: :cascade do |t|
-    t.integer "hotel_id"
     t.text "description"
     t.integer "price"
     t.boolean "is_booked"
