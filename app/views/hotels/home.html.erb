@@ -1,0 +1,19 @@
+<h1>Hotels#home</h1>
+<p>Find me in app/views/hotels/home.html.erb</p>
+<% if current_user  %>
+<p><strong>Ambiance</strong><%= rating_for @hotel, 'ambiance' %></p>
+<p><strong>Service</strong><%= rating_for @hotel, 'service' %></p>
+<p><strong>Staff</strong><%= rating_for @hotel, 'staff' %></p>
+<% end %>
+<strong> Reviews: </strong>
+  <%if @reviews.present? %>
+    <% @reviews.each do |review| %>
+      <p> <%=review.user.email %>  <%= review.review_text %> </p>
+    <% end %>
+  <% end %>
+   <% if current_user %>
+    <%= form_for Review.new, url:  {controller: 'reviews',action: "add_review"} do |f| %>
+      <%= f.text_field :review_text %>
+      <%= f.submit "Review" %>
+    <% end %>
+  <% end %>
