@@ -1,9 +1,9 @@
 <h1>Hotels#home</h1>
 <p>Find me in app/views/hotels/home.html.erb</p>
 <% if current_user  %>
-<p><strong>Ambiance</strong><%= rating_for @hotel, 'ambiance' %></p>
-<p><strong>Service</strong><%= rating_for @hotel, 'service' %></p>
-<p><strong>Staff</strong><%= rating_for @hotel, 'staff' %></p>
+<p><strong>Ambiance</strong><%= rating_for @hotel, 'ambiance',star_path: '/images/ratyrate' %></p>
+<p><strong>Service</strong><%= rating_for @hotel, 'service',star_path: '/images/ratyrate' %></p>
+<p><strong>Staff</strong><%= rating_for @hotel, 'staff',star_path: '/images/ratyrate' %></p>
 <% end %>
 <strong> Reviews: </strong>
   <%if @reviews.present? %>
