@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'paperclip'
-gem 'aws-sdk', '~> 2'
+gem 'aws-sdk', '~> 2.3'
 # bootstrap
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'devise'
