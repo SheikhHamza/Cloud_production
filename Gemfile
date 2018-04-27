@@ -11,7 +11,7 @@ gem 'aws-sdk', '< 2.0'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'devise'
 gem 'jquery-rails'
-  
+gem 'ratyrate'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use Puma as the app server
