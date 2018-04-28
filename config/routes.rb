@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'users/index'
+  post 'users/:id/destroy_user', to:'users#destroy_user'
   post 'reviews/add_review'
   post 'reviews/:id/destroy',to: 'reviews#destroy'
   get 'hotels/home'

@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   ratyrate_rater
   has_many :reviews, dependent: :delete_all
-  has_one :profile
+  has_one :profile, dependent: :delete
 end
