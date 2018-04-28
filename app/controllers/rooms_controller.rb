@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin, only: [:edit,:update,:destroy,:new,:create]
 
   # GET /rooms
   # GET /rooms.json
@@ -67,6 +68,11 @@ class RoomsController < ApplicationController
       @room = Room.find(params[:id])
     end
 
+    def check_admin
+      if !(current_user.is_admin?)
+        redirect_to rooms_path
+      end
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def room_params
       params.require(:room).permit(:hotel_id, :description, :price)

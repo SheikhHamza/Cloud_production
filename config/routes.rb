@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   post 'reviews/add_review'
-
+  post 'reviews/:id/destroy',to: 'reviews#destroy'
   get 'hotels/home'
   root 'hotels#home'
   post '/rate' => 'rater#create', :as => 'rate'
