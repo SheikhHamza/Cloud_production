@@ -1,14 +1,5 @@
+<p id="notice" style="color:red"><%= notice %></p>
 <%= form_for @booking,url:"/rooms/#{@room.id}/bookings/#{current_user.id}/create" do |f| %>
-<% if @booking.errors.any? %>
-  <div>
-    <h2>There were some errors:</h2>
-    <ul>
-      <% @booking.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
 <div class="field">
 	<%= f.label :From %> <br>
 	<%= f.datetime_field :from, id: :from %>

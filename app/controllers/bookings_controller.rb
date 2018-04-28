@@ -17,8 +17,7 @@ class BookingsController < ApplicationController
       @booking.save
       redirect_to "/bookings/#{current_user.id}/index", notice: 'Room was successfully booked.'
     else
-      @booking.errors.add(message: 'dates are invalid') 
-      render new 
+      redirect_to "/rooms/#{@room.id}/bookings/#{current_user.id}/new", notice: 'invalid Date inputs' 
   	end
   end
 
