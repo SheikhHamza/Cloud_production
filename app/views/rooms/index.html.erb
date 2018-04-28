@@ -5,29 +5,57 @@
 <table>
   <thead>
     <tr>
-      <th>Hotel</th>
-      <th>Description</th>
       <th>Price</th>
-      <th>Is booked</th>
-      <th colspan="3"></th>
+      <th>Room Number</th>
+      <th>Floor</th>
+      <th>Kitchen</th>
+      <th>Number of Beds</th>
+      <th>AC</th>
+      <th>TV</th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @rooms.each do |room| %>
-      <tr>
-        <td><%= room.hotel_id %></td>
-        <td><%= room.description %></td>
-        <td><%= room.price %></td>
-        <td><%= room.is_booked %></td>
-        <td><%= link_to 'Show', room %></td>
-        <td><%= link_to 'Edit', edit_room_path(room) %></td>
-        <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <tr>
+      <td><%= room.price %></td>
+      <td><%= room.room_number %></td>
+      <td><%= room.floor %></td>
+      <td>
+          <% if room.has_kitchen? %>
+          <%= "Yes" %>
+          <% else %>
+          <%= "No" %>
+          <% end %>
+      </td>
+      <td><%= room.number_of_beds %></td>
+      <td>
+          <% if room.has_AC? %>
+          <%= "Yes" %>
+          <% else %>
+          <%= "No" %>
+          <% end %>
+      </td>
+      <td>
+          <% if room.has_TV? %>
+          <%= "Yes" %>
+          <% else %>
+          <%= "No" %>
+          <% end %>
+      </td>
+      <td><%= link_to 'Picture',room_roompictures_path(room.id)%></td>
+      <td><%= link_to 'Show', room %></td>
+      <% if current_user.is_admin? %> 
+      <td><%= link_to 'Edit', edit_room_path(room) %></td>
+      <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
+<% if current_user.is_admin? %> 
 <%= link_to 'New Room', new_room_path %>
+<% end %>
