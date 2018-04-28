@@ -12,7 +12,7 @@
       <th>Number of Beds</th>
       <th>AC</th>
       <th>TV</th>
-      <th colspan="4"></th>
+      <th colspan="5"></th>
     </tr>
   </thead>
 
@@ -45,13 +45,15 @@
           <% end %>
       </td>
       <td><%= link_to 'Picture',room_roompictures_index_path(room.id)%></td>
-      <td><%= link_to 'Show', room %></td>
       <% if current_user.present? %>
         <% if current_user.is_admin? %> 
         <td><%= link_to 'Edit', edit_room_path(room) %></td>
         <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
+        <% if !room.is_booked? %>
+        <td><%=link_to 'Book',"/rooms/#{room.id}/bookings/#{current_user.id}/new" %></td>
         <% end %>
+      <% end %>
     </tr>
     <% end %>
   </tbody>

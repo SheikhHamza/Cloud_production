@@ -6,4 +6,6 @@ class User < ApplicationRecord
   ratyrate_rater
   has_many :reviews, dependent: :delete_all
   has_one :profile, dependent: :delete
+
+  has_many :rooms, through: :bookings
 end

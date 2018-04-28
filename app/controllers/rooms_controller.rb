@@ -27,6 +27,7 @@ class RoomsController < ApplicationController
   def create
     @room = Room.new(room_params)
     @room.hotel_id = Hotel.last.id
+    @room.is_booked = false
     respond_to do |format|
       if @room.save
         format.html { redirect_to @room, notice: 'Room was successfully created.' }
