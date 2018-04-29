@@ -2,7 +2,7 @@
 
 <h1>Rooms</h1>
 
-<table class="table-bordered">
+<table class="table">
 <thead class="thead-dark text-center">
     <tr>
       <th>Price</th>
@@ -44,14 +44,14 @@
           <%= "No" %>
           <% end %>
       </td>
-      <td><%= link_to 'Picture',room_roompictures_index_path(room.id)%></td>
+      <td><%= link_to 'Picture',room_roompictures_index_path(room.id),class:'btn btn-warning',style:'color:white'%></td>
       <% if current_user.present? %>
         <% if current_user.is_admin? %> 
-        <td><%= link_to 'Edit', edit_room_path(room) %></td>
-        <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_room_path(room),class:'btn btn-primary',style:'color:white' %></td>
+        <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger',style:'color:white' %></td>
         <% end %>
         <% if !room.is_booked? %>
-        <td><%=link_to 'Book',"/rooms/#{room.id}/bookings/#{current_user.id}/new" %></td>
+        <td><%=link_to 'Book',"/rooms/#{room.id}/bookings/#{current_user.id}/new",class:'btn btn-primary',style:'color:white' %></td>
         <% end %>
       <% end %>
     </tr>
@@ -62,6 +62,6 @@
 <br>
 <% if current_user.present? %>
   <% if current_user.is_admin? %> 
-  <%= link_to 'New Room', new_room_path %>
+  <%= link_to 'New Room', new_room_path,class:'btn btn-primary',style:'color:white' %>
   <% end %>
 <% end %>
