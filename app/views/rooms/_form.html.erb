@@ -1,53 +1,71 @@
-<%= form_with(model: room, local: true) do |form| %>
-<% if room.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(room.errors.count, "error") %> prohibited this room from being saved:</h2>
+<div class="row">
+  <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6 text-center 
+  col-lg-offset-3 col-xs-offset-3 col-sm-offset-3 col-md-offset-3 text-center">
+  <div class="form-group form-signin">
+    <%= form_with(model: room, local: true) do |form| %>
+    <% if room.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(room.errors.count, "error") %> prohibited this room from being saved:</h2>
 
-  <ul>
-    <% room.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
+      <ul>
+        <% room.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
     <% end %>
-  </ul>
-</div>
-<% end %>
 
-<div class="field">
-  <%= form.label :room_number %>
-  <%= form.number_field :room_number, id: :room_number %>
+    <div class="field">
+      <%= form.label :room_number %>
+      <%= form.number_field :room_number, id: :room_number ,class: 'form-control'%>
+    </div>
+
+    <div class="field">
+      <%= form.label :floor %>
+      <%= form.number_field :floor, id: :floor,min:1,max:10 ,class: 'form-control'%>
+    </div>
+
+    <div class="field">
+      <%= form.label :price %>
+      <%= form.number_field :price, id: :room_price,class: 'form-control' %>
+    </div>
+    <h2>Features</h2>
+    <hr>
+    <div class="field">
+      <%= form.label "Number of beds"%>
+      <%= form.number_field :number_of_beds, id: :number_of_bed, min:1,max: 5,class: 'form-control'%>
+    </div>
+    <div class="row text-center">
+      <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6 text-center 
+      col-lg-offset-3 col-xs-offset-3 col-sm-offset-3 col-md-offset-3">
+      <div class="row">  
+        <div class="col-lg-3 col-xs-3 col-sm-3 col-md-3">
+          <div class="field">
+            <%= form.label "Kichen" %>
+            <%= form.check_box :has_kitchen, id: :has_kitchen ,class: 'form-control'%>
+          </div>
+        </div>
+        <div class="col-lg-3 col-xs-3 col-sm-3 col-md-3">
+          <div class="field">
+            <%= form.label "AC" %>
+            <%= form.check_box :has_AC, id: :has_AC ,class: 'form-control'%>
+          </div>
+        </div>
+        <div class="col-lg-3 col-xs-3 col-sm-3 col-md-3">
+          <div class="field">
+            <%= form.label "TV" %>
+            <%= form.check_box :has_TV, id: :has_TV,class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <%= form.submit "Create",class:'btn btn-primary' %>
+  </div>
+
+  <% end %>
+</div>
+</div>
 </div>
 
-<div class="field">
-  <%= form.label :floor %>
-  <%= form.number_field :floor, id: :floor,min:1,max:10 %>
-</div>
-
-<div class="field">
-  <%= form.label :price %>
-  <%= form.number_field :price, id: :room_price %>
-</div>
-
-<div class="field">
-  <%= form.label :has_kitchen %>
-  <%= form.check_box :has_kitchen, id: :has_kitchen %>
-</div>
-
-<div class="field">
-  <%= form.label :number_of_beds %>
-  <%= form.number_field :number_of_beds, id: :number_of_bed, min:1,max: 5%>
-</div>
-
-<div class="field">
-  <%= form.label :has_AC %>
-  <%= form.check_box :has_AC, id: :has_AC %>
-</div>
-
-<div class="field">
-  <%= form.label :has_TV %>
-  <%= form.check_box :has_TV, id: :has_TV %>
-</div>
-
-<div class="actions">
-  <%= form.submit %>
-</div>
-
-<% end %>

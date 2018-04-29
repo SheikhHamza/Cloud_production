@@ -83,12 +83,13 @@
     <% end %>
   </div>
   <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6 float-left">
-    <p> <strong>Review: </strong><%= review.review_text %> </p>
+    <p> <strong>Review: </strong><%= review.review_text %> 
     <% if current_user.present? %>
     <% if current_user.is_admin? %>
     <%= link_to "delete Review","reviews/#{review.id}/destroy",method:'post',class:'btn btn-danger'%>
     <% end %>
     <% end %>
+    </p>
   </div>
 </div>
 <% end %>
