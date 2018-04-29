@@ -15,3 +15,96 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.white{
+background-color: white;
+margin: 5px;
+padding: 1vw;
+border-radius: 2px;
+}
+.color{
+padding: 1vw;
+border-radius: 10px;
+}
+.color3{
+	border-radius: 10px;
+	padding: 1vw;
+}
+.color2{
+color: white;
+margin: 5px;
+padding: 1vw;
+border-radius: 10px;
+}
+h5{
+font-size:1vw;
+}
+.row{
+padding: 5px;
+}
+a{
+text-align: left;
+color: white;
+font-size: 1vw;
+margin: 5px;
+padding: 5px;
+margin-top: 0px;
+padding-top: 0px;
+}
+.leftcol{
+font-size:0.8vw;
+color: white;
+text-align: left;
+margin-bottom: 0.5vw;
+}
+.list-group{
+padding: 5px;
+}
+.icon-list li {
+padding: 0 0 5px 20px;
+display: block;
+position: relative;
+}
+.icon-list li:before {
+font-family: 'Glyphicons Halflings';
+position: releative;
+left: 0px;
+padding: 5px;
+font-size:80%
+}
+.chevron-right li:before {
+content: '\e080';
+}
+
+.checkmark li:before {
+content: '\e067';
+}
+
+.arrow-right li:before {
+content: '\e092';
+}
+
+ul.color li > a{
+color:blue;
+}
+
+.profile{
+background-color:white;
+color: black;
+text-allign:left;
+padding:1vw;
+}
+.profileButton
+{
+	border: none;
+	padding: 0.5vw;
+	color: black;	
+	font-size: 1vw;
+	list-style: inline;
+}
+.innerheading	{
+	color: #8a8a8a;
+}
+.table td {
+   text-align: center;   
+}

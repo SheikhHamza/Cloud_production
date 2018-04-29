@@ -1,17 +1,15 @@
 <p id="notice"><%= notice %></p>
-
+<h1>Profile</h1>
 <p>
-  <strong>User:</strong>
-  <br>
-  <%= image_tag @profile.avatar.url(:medium)%>
+  <%= image_tag @profile.avatar.url(:medium),class:'img-rounded'%>
 </p>
 <p>
-  <strong>User:</strong>
-  <%= @profile.username %>
+  <strong><%= @profile.username %></strong>
 </p>
 <p>
-  <strong>Bio:</strong>
+  <strong>
   <%= @profile.bio %>
+</strong>
 </p>
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<%= link_to 'Edit', edit_profile_path(@profile),class:'btn btn-primary',style:'color:white' %> 
 

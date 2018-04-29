@@ -1,22 +1,106 @@
-<h1>Hotels#home</h1>
-<p>Find me in app/views/hotels/home.html.erb</p>
-<% if current_user  %>
-<p><strong>Ambiance</strong><%= rating_for @hotel, 'ambiance',star_path: '/images/ratyrate' %></p>
-<p><strong>Service</strong><%= rating_for @hotel, 'service',star_path: '/images/ratyrate' %></p>
-<p><strong>Staff</strong><%= rating_for @hotel, 'staff',star_path: '/images/ratyrate' %></p>
+
+<!-- Header -->
+<!-- /.container -->
+
+</div>
+<!-- /.intro-header -->
+
+<!-- Page Content -->
+
+<a  name="services"></a>
+<div class="content-section-a">
+
+  <div class="container" style="background-image: url('/images/a.jpg'); color:white">
+    <div class="row">
+      <div class="col-lg-5 col-sm-6">
+        <hr class="section-heading-spacer">
+        <div class="clearfix"></div>
+        <h2 class="section-heading">Relive The Mughal Era<br>Come Stay With Us</h2>
+        <p class="lead">We provide the best facility and services. Come stay with us and see how the mughals live their lives</p>
+      </div>
+      <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+        <img class="img-responsive" src="img/ipad.png" alt="">
+      </div>
+    </div>
+
+  </div>
+  <!-- /.container -->
+
+</div>
+<!-- /.content-section-a -->
+
+<div class="content-section-b">
+
+  <div class="container" style="background-image: url('/images/b.jpg'); color:white; margin-top: 1vw">
+
+    <div class="row">
+      <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+        <hr class="section-heading-spacer">
+        <div class="clearfix"></div>
+        <h2 class="section-heading">Great Quality Food<br>Come And Have A Taste</h2>
+        <p class="lead">We provide the best quality food. We can cook continental, chinese, italian and much more. Come try us!</p>
+      </div>
+      <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+        <img class="img-responsive" src="img/dog.png" alt="">
+      </div>
+    </div>
+
+  </div>
+  <!-- /.container -->
+
+
+</div>
+<!-- /.content-section-b -->
+<div class="row text-center">
+  <h1>Ratings</h1>
+</div>
+<div class="row text-center">
+  <div class="col-lg-4 col-xs-4 col-sm-4 col-md-4">
+    <h1>Ambiance</h1>
+    <%= rating_for @hotel, 'ambiance',star_path: '/images/ratyrate' %>
+  </div>
+  <div class="col-lg-4 col-xs-4 col-sm-4 col-md-4">
+    <h1>Service</h1>
+    <%= rating_for @hotel, 'service',star_path: '/images/ratyrate' %>
+  </div>
+  <div class="col-lg-4 col-xs-4 col-sm-4 col-md-4">
+    <h1>Staff</h1>
+    <%= rating_for @hotel, 'staff',star_path: '/images/ratyrate' %>
+  </div>
+</div> 
+
+<div class="row text-center">
+  <h1>Reviews</h1>
+</div>
+
+<%if @reviews.present? %>
+<% @reviews.each do |review| %>
+<div class="row" style="background-color: rgb(240,240,240);">
+  <div class="col-lg-2 col-lg-offset-4 col-xs-2 col-xs-offset-4 col-sm-2 col-sm-offset-4 col-md-2 col-md-offset-4 float-right">
+    <% if review.user.profile.present? %> 
+    <p> <Strong>Username: <%=review.user.profile.username %></Strong>
+    </p>
+    <% end %>
+  </div>
+  <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6 float-left">
+    <p> <strong>Review: </strong><%= review.review_text %> </p>
+    <% if current_user.present? %>
+    <% if current_user.is_admin? %>
+    <%= link_to "delete Review","reviews/#{review.id}/destroy",method:'post',class:'btn btn-danger'%>
+    <% end %>
+    <% end %>
+  </div>
+</div>
 <% end %>
-<strong> Reviews: </strong>
-  <%if @reviews.present? %>
-    <% @reviews.each do |review| %>
-      <p> <%=review.user.email %>  <%= review.review_text %> </p>
-      <% if review.user == current_user %>
-      <%= link_to "delete Review","reviews/#{review.id}/destroy",method:'post' %>
-      <% end %>
-    <% end %>
+<% end %>
+
+<% if current_user %>
+<div class="row">
+  <div class='col-lg-4 col-lg-offset-4 col-xs-offset-4 col-sm-offset-4 col-md-offset-4 col-xs-4 col-sm-4 col-md-4'>
+  <%= form_for Review.new, url:  {controller: 'reviews',action: "add_review"} do |f| %>
+  <%= f.text_field :review_text %>
+  <%= f.submit "Review",class:'btn btn-primary' %>
   <% end %>
-   <% if current_user %>
-    <%= form_for Review.new, url:  {controller: 'reviews',action: "add_review"} do |f| %>
-      <%= f.text_field :review_text %>
-      <%= f.submit "Review" %>
-    <% end %>
   <% end %>
+</div>
+</div>
