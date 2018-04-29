@@ -10,10 +10,11 @@ class BookingsController < ApplicationController
   	@room = Room.find(params[:room_id])
   	@booking.room = @room  
   	@booking.user = User.find(params[:user_id])
-  	@room.is_booked = false
     days = (@booking.to.to_date - @booking.from.to_date).to_i
     if days > 0
       @booking.bill = (@room.price*days)
+      @room.is_booked = true
+      @room.save
       @booking.save
       redirect_to "/bookings/#{current_user.id}/index", notice: 'Room was successfully booked.'
     else
