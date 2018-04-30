@@ -14,8 +14,8 @@ class BookingsController < ApplicationController
     if days > 0
       @booking.bill = (@room.price*days)
       @room.is_booked = true
-      @room.save
       @booking.save
+      @room.save
       redirect_to "/bookings/#{current_user.id}/index", notice: 'Room was successfully booked.'
     else
       redirect_to "/rooms/#{@room.id}/bookings/#{current_user.id}/new", notice: 'invalid Date inputs' 

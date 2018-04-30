@@ -29,8 +29,11 @@ class RoomsController < ApplicationController
     @room.hotel_id = Hotel.last.id
     @room.is_booked = false
     respond_to do |format|
+      puts "****************************"
+      puts @room.attribute_names
+      puts "****************************"
       if @room.save
-        format.html { redirect_to @room, notice: 'Room was successfully created.' }
+        format.html { redirect_to rooms_path, notice: 'Room was successfully created.' }
         format.json { render :show, status: :created, location: @room }
       else
         format.html { render :new }
@@ -44,7 +47,7 @@ class RoomsController < ApplicationController
   def update
     respond_to do |format|
       if @room.update(room_params)
-        format.html { redirect_to @room, notice: 'Room was successfully updated.' }
+        format.html { redirect_to room_path, notice: 'Room was successfully updated.' }
         format.json { render :show, status: :ok, location: @room }
       else
         format.html { render :edit }
@@ -56,6 +59,10 @@ class RoomsController < ApplicationController
   # DELETE /rooms/1
   # DELETE /rooms/1.json
   def destroy
+    @booking = Booking.where(room_id:@room.id).last
+    if @booking.present?
+      @booking.destroy
+    end
     @room.destroy
     respond_to do |format|
       format.html { redirect_to rooms_url, notice: 'Room was successfully destroyed.' }
@@ -76,6 +83,6 @@ class RoomsController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def room_params
-      params.require(:room).permit(:room_number,:floor,:price,:has_kitchen,:number_of_beds,:has_AC,:has_TV)
+      params.require(:room).permit(:room_number,:floor,:price,:beds,:AC)
     end
-end
+  end

@@ -9,7 +9,7 @@
       <th>Room Number</th>
       <th>Floor</th>
       <th>Kitchen</th>
-      <th>Number of Beds</th>
+      <th>Beds</th>
       <th>AC</th>
       <th>TV</th>
       <th colspan="5"></th>
@@ -19,26 +19,12 @@
   <tbody>
     <% @rooms.each do |room| %>
     <tr>
-      <td><%= room.price %></td>
       <td><%= room.room_number %></td>
       <td><%= room.floor %></td>
+      <td><%= room.beds %></td>
+      <td><%= room.price %></td>
       <td>
-          <% if room.has_kitchen? %>
-          <%= "Yes" %>
-          <% else %>
-          <%= "No" %>
-          <% end %>
-      </td>
-      <td><%= room.number_of_beds %></td>
-      <td>
-          <% if room.has_AC? %>
-          <%= "Yes" %>
-          <% else %>
-          <%= "No" %>
-          <% end %>
-      </td>
-      <td>
-          <% if room.has_TV? %>
+          <% if room.AC? %>
           <%= "Yes" %>
           <% else %>
           <%= "No" %>

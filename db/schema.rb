@@ -113,16 +113,14 @@ ActiveRecord::Schema.define(version: 20180428111502) do
 
   create_table "rooms", force: :cascade do |t|
     t.integer "price"
+    t.integer "floor"
+    t.integer "room_number"
+    t.integer "beds"
     t.boolean "is_booked"
+    t.boolean "AC"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "hotel_id"
-    t.integer "room_number"
-    t.integer "floor"
-    t.boolean "has_kitchen"
-    t.boolean "number_of_beds"
-    t.boolean "has_AC"
-    t.boolean "has_TV"
   end
 
   create_table "users", force: :cascade do |t|
