@@ -8,6 +8,10 @@ class UsersController < ApplicationController
 
   def destroy_user
   	@user = User.find(params[:id])
+    @booking = Booking.where(user_id:@user.id).last
+    if @booking.present?
+      @booking.destroy
+    end
   	@user.destroy
   	redirect_to  users_index_path
   end

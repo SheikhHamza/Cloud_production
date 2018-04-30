@@ -29,9 +29,6 @@ class RoomsController < ApplicationController
     @room.hotel_id = Hotel.last.id
     @room.is_booked = false
     respond_to do |format|
-      puts "****************************"
-      puts @room.attribute_names
-      puts "****************************"
       if @room.save
         format.html { redirect_to rooms_path, notice: 'Room was successfully created.' }
         format.json { render :show, status: :created, location: @room }
